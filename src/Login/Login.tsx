@@ -36,7 +36,7 @@ class Login extends Component<Props, State> {
           <input type="text" onChange={this.props.emailChange} placeholder="User Email" />
         </div>
         <div>
-          <input type="password" placeholder="Password" />
+          <input type="password" onChange={this.props.passwordChange}placeholder="Password" />
         </div>
       </div>
     )

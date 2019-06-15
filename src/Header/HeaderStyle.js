@@ -2,5 +2,7 @@ import styled from 'styled-components'
 
 export const HeaderStyle = styled.div`
     background-color: blueviolet;
-    padding: 30px;
+    position:absolute;
+    left:0; right:0;
+    height: 92px;
 `

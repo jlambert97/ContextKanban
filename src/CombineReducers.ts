@@ -9,5 +9,3 @@ export interface IAppState {
 export const AppState = combineReducers({
     login: loginReducer
 })
-
-// export type AppState = ReturnType<typeof CombineReducers>

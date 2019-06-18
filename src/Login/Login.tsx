@@ -4,6 +4,7 @@ import { LoginState } from './redux/types'
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk'
 import { IAppState } from '../CombineReducers';
+import { Link } from 'react-router-dom'
 
 interface State {
   emailChange: typeof emailChange
@@ -29,14 +30,18 @@ class Login extends Component<Props, State> {
   render() {
     return (
       <div>
-        {this.props.state.login.email}
-        {this.props.state.login.password}
-        {this.props.state.login.authenticated}
         <div>
           <input type="text" onChange={this.props.emailChange} placeholder="User Email" />
         </div>
         <div>
           <input type="password" onChange={this.props.passwordChange}placeholder="Password" />
+        </div>
+        <div>
+          <Link to="/dashboard">
+            <button type="button" onClick={() => this.props.authChange(false)}>
+              Login
+            </button>
+          </Link>
         </div>
       </div>
     )

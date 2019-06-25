@@ -5,9 +5,15 @@ import Dashboard from '../Dashboard/Dashboard'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import SideMenu from '../SideMenu/SideMenu'
+import CriarContaModal from '../Modais/CriarConta/CriarContaModal'
 import * as MainStyleSheet from './AppStyle'
+import { IAppState } from '../App/CombineReducers';
+import { connect } from 'react-redux';
 
-class App extends Component {
+interface StateProps {
+  state: IAppState
+}
+class App extends Component<StateProps> {
   render() {
     return (
       <div>
@@ -20,11 +26,21 @@ class App extends Component {
               <Route path="/dashboard" component={Dashboard} />
             </Switch>
           </Router>
+          {this.props.state.header.modalCriarConta &&
+            <MainStyleSheet.BackgroundModal>
+              <CriarContaModal />    
+            </MainStyleSheet.BackgroundModal>
+          }
         </MainStyleSheet.MainStyle>
         <Footer />
       </div>
     )
   };
 }
+const mapStateToProps = (states: IAppState): StateProps => {
+  return {
+    state: states 
+  }
+}
 
-export default App
+export default connect<StateProps, any, any, IAppState>(mapStateToProps)(App)

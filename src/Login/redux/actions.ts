@@ -1,7 +1,6 @@
 import { EMAIL_CHANGE, PASSWORD_CHANGE, AUTH_CHANGE, LoginActionTypes} from './types'
 
 export function emailChange(newValue: string): LoginActionTypes {
-    console.log('pingou aqui na action')
     return {
         type: EMAIL_CHANGE,
         emailValue: newValue

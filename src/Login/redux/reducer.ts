@@ -7,11 +7,6 @@ import {
 } from './types'
 
 const initialState: LoginState = {
-    // loginState: {
-    //     email: '',
-    //     password: '',
-    //     authenticated: false
-    // }
     email: '',
     password: '',
     authenticated: false

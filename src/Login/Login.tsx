@@ -3,7 +3,7 @@ import { emailChange, passwordChange, authChange } from './redux/actions'
 import { LoginState } from './redux/types'
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk'
-import { IAppState } from '../CombineReducers';
+import { IAppState } from '../App/CombineReducers';
 import { Link } from 'react-router-dom'
 
 interface State {

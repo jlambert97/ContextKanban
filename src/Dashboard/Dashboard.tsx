@@ -3,7 +3,7 @@ import { nomeChange, sobrenomeChange, idadeChange } from './redux/actions'
 import { DashboardState } from './redux/types'
 import { connect } from 'react-redux';
 import { ThunkDispatch } from 'redux-thunk'
-import { IAppState } from '../CombineReducers';
+import { IAppState } from '../App/CombineReducers';
 import { Link } from 'react-router-dom'
 import { authChange } from '../Login/redux/actions';
 

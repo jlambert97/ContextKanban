@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App'
-import { AppState } from './CombineReducers'
+import App from './App/App'
+import { AppState } from './App/CombineReducers'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 

@@ -5,6 +5,8 @@ import { ThunkDispatch } from 'redux-thunk'
 import { IAppState } from '../App/CombineReducers';
 import { HeaderState } from './redux/types'
 import { showModalLogin, showModalCriarConta } from './redux/actions'
+import { sideMenuShow } from '../SideMenu/redux/actions'
+import { authChange } from '../Login/redux/actions'
 import './Header.css'
 
 interface State {
@@ -19,6 +21,8 @@ interface StateProps {
 interface DispatchProps {
   showModalLogin: (newValue: boolean) => void;
   showModalCriarConta: (newValue: boolean) => void;
+  sideMenuShow: (newValue: boolean) => void
+  authChange: (newValue: boolean) => void;
 }
 interface OwnProps { 
 
@@ -28,10 +32,26 @@ class Header extends Component<Props, State> {
     render() {
       return (
         <StylesSheet.HeaderStyle>
-          <header className="header">
-            <div className="container flex">
-              <button onClick={() => this.props.showModalCriarConta(true)}>Criar Conta</button>  
-              <button onClick={() => this.props.showModalLogin(true)}>Login </button>  
+            <header className="header">
+            <div className="container header-flex">
+              <div className="item menu-button">
+                <button onClick={() => this.props.sideMenuShow(!this.props.state.sideMenu.sideMenuShow)}>Menu</button>
+              </div>
+              <div className="header-center"></div>
+              <div className="item login-buttons">
+                {!this.props.state.login.authenticated && 
+                  <section>
+                    <button onClick={() => this.props.showModalCriarConta(true)}>Criar Conta</button>  
+                    <button onClick={() => this.props.authChange(true)}>Login </button> 
+                  </section>
+                }
+                {this.props.state.login.authenticated && 
+                  <section>
+                    <button onClick={() => this.props.authChange(false)}>Sair</button>
+                  </section>
+                }
+
+              </div>
             </div>
           </header>
         </StylesSheet.HeaderStyle>
@@ -47,6 +67,8 @@ class Header extends Component<Props, State> {
     return {
           showModalLogin: (e: boolean) => {dispatch(showModalLogin(e))},
           showModalCriarConta: (e: boolean) => {dispatch(showModalCriarConta(e))},
+          sideMenuShow: (e: boolean) => {dispatch(sideMenuShow(e))},
+          authChange: (e: boolean) => {dispatch(authChange(e))}
       }
     }
   

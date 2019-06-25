@@ -49,7 +49,11 @@ class CriarContaModal extends Component<Props, State> {
             <DatePicker 
               dateFormat="dd/MM/yyyy" 
               onChange={this.props.birthChange} 
-              selected={this.props.state.criarContaModal.birth} 
+              selected={this.props.state.criarContaModal.birth}
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select" 
             />
         </div>
         <div>

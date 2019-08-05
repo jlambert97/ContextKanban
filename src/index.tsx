@@ -1,16 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App/App'
-import { AppState } from './App/CombineReducers'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import App from './Aṕp'
 
-
-const devTools = (window as any).__REDUX_DEVTOOLS_EXTENSION__ &&
-(window as any).__REDUX_DEVTOOLS_EXTENSION__()
 
 ReactDOM.render(
-    <Provider store={createStore(AppState, devTools)}>
-        <App />
-    </Provider>
+    <App />
 , document.getElementById('root'));

@@ -1,38 +1,23 @@
+import { cards } from './apifake'
 export interface IState {
-    count: number
+    colunas: any
     isAuth: boolean
 }
 
 export type Actions = 
-    | { type: 'INCREMENT'}
-    | { type: 'DECREMENT'}
-    | { type: 'SET_VALUE', payload: number}
+    | { type: 'MOVE_CARD', from:any, to: any}
 
 export const initialState: IState = {
-    count: 0,
+    colunas: cards,
     isAuth: false
 }
 
 const reducer = (state: IState = initialState, action: Actions): IState => {
     switch(action.type) {
-        case 'INCREMENT': {
-            return {
-                ...state,
-                count: state.count + 1
-            }
+        case 'MOVE_CARD': {
+            return state
         }
-        case 'DECREMENT': {
-            return {
-                ...state,
-                count: state.count - 1
-            }
-        }
-        case 'SET_VALUE': {
-            return {
-                ...state,
-                count: action.payload
-            }
-        }
+        default: return state
     }
 }
 

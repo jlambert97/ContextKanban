@@ -1,15 +1,18 @@
 import React from 'react'
 import Card from '../Cards'
+import { Container } from './style'
 
-const Coluna = () => {
+const Coluna = (props: any) => {
     return (
-        <div>
-            <h3>Titulo da Coluna</h3>
-            <Card/>
-            <Card/>
-            <Card/>
-            <Card/>
-        </div>
+        <Container>
+            <header>
+                <h1>{props.data.title}</h1>
+            </header>
+
+            <ul>
+                { props.data.cards.map((card: { id: any; }, index: any) => <Card key={card.id} index={index} data={card} />) }
+            </ul>
+        </Container>
     )
 }
 

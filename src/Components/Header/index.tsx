@@ -3,7 +3,7 @@ import { Container, Label } from './style'
 import Axios from 'axios'
 
 const Header = () => {
-    const [ val, setVal ] = useState('Sem nada')
+    const [ val, setVal ] = useState('')
 
     const handleButton = () => {
         Axios.get('http://saleshub.ciashop.com.br/api/v1/healthcheck') 
@@ -15,7 +15,7 @@ const Header = () => {
     return (
         <Container>
             <Label>KanbanContext {val}</Label>
-            <button onClick={() => handleButton()}>Xaxa</button>
+            {/* <button onClick={() => handleButton()}>Xaxa</button> */}
         </Container>
     )
 }

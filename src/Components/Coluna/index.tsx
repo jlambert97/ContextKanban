@@ -10,7 +10,9 @@ const Coluna = (props: any) => {
             </header>
 
             <ul>
-                { props.data.cards.map((card: { id: any; }, index: any) => <Card key={card.id} index={index} data={card} />) }
+                { props.data.cards.map((card: { id: any; }, index: any) => (
+                    <Card key={card.id} listIndex={props.listIndex} index={index} data={card} />) 
+                )}
             </ul>
         </Container>
     )

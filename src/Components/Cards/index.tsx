@@ -7,11 +7,11 @@ export interface ICard {
     conteudo: string
 }
 
-const Card = ({data, index}: any) => {
-    const { dispatch } = useContext(Context)
+const Card = ({data, index, listIndex}: any) => {
+    const { state, dispatch } = useContext(Context)
     const [{isDragging}, dragRef] = useDrag({
         item: {
-            type: 'CARD', index: index
+            type: 'CARD', index, listIndex
         },
         collect: monitor => ({
             isDragging: monitor.isDragging()
@@ -20,6 +20,9 @@ const Card = ({data, index}: any) => {
     const [, dropRef] = useDrop({
         accept: 'CARD',
         hover(item: any, monitor) {
+            const draggedListIndex = item.listIndex
+            const targetListIndex = listIndex;
+            console.log(draggedListIndex, targetListIndex)
             const draggedIndex = item.index;
             const targetIndex = index;
 
@@ -37,7 +40,10 @@ const Card = ({data, index}: any) => {
             if(draggedIndex > targetIndex && draggedTop > targetCenter)
                 return
             
-            dispatch({type: 'MOVE_CARD', from: draggedIndex, to: targetIndex})
+            console.log(state)
+            dispatch({type: 'MOVE_CARD', from: draggedIndex, to: targetIndex, fromList: draggedListIndex})
+
+            item.index = targetIndex
         }
     })
     

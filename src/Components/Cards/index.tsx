@@ -20,13 +20,13 @@ const Card = ({data, index, listIndex}: any) => {
     const [, dropRef] = useDrop({
         accept: 'CARD',
         hover(item: any, monitor) {
+            console.log(item)
             const draggedListIndex = item.listIndex
             const targetListIndex = listIndex;
-            console.log(draggedListIndex, targetListIndex)
             const draggedIndex = item.index;
             const targetIndex = index;
 
-            if(draggedIndex === targetIndex)
+            if(draggedIndex === targetIndex  && draggedListIndex === targetListIndex)
                 return
 
             // tive que tipar como any para remover erros avisando de possivel null
@@ -40,7 +40,7 @@ const Card = ({data, index, listIndex}: any) => {
             if(draggedIndex > targetIndex && draggedTop > targetCenter)
                 return
             
-            console.log(state)
+            console.log("xaxa" + draggedListIndex)
             dispatch({type: 'MOVE_CARD', from: draggedIndex, to: targetIndex, fromList: draggedListIndex})
 
             item.index = targetIndex

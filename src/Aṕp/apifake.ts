@@ -1,3 +1,27 @@
+import { IColuna, ICard } from './Reducer'
+
+export const cardlist = [
+    { 
+      title: 'Tarefas', 
+      cards: [
+        {
+          id:1, 
+          content: 'stringtest', 
+          title:'stringtest'
+        } as ICard,
+        {
+          id:2, 
+          content: 'stringtest2', 
+          title:'stringtest2'
+        } as ICard
+      ]
+    } as IColuna
+  ]
+
+
+
+
+
 export function cards() {
     return [
       { 

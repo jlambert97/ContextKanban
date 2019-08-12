@@ -1,5 +1,4 @@
 import { cards, cardlist } from './apifake'
-import produce from 'immer'
 
 export interface IState {
     colunas: any
@@ -28,14 +27,9 @@ export const initialState: IState = {
 const reducer = (state: IState = initialState, action: Actions): IState => {
     switch(action.type) {
         case 'MOVE_CARD': {
-            console.log(action.from, action.to, action.fromList)
+            console.log('Xaxa');
             return {
-                ...state,
-                colunas: produce(state.colunas, (draft: any)  => {
-                    const dragged = draft[action.fromList].cards[action.from];
-                    draft[action.fromList].cards.splice(action.from, 1)
-                    draft[action.fromList].cards.splice(action.to, 0, dragged)
-                }) as any
+                ...state
             }
         }
         default: return state
